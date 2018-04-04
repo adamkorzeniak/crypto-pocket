@@ -30,6 +30,17 @@ public class MainActivity extends AppCompatActivity {
 
         TextView balanceTextView = (TextView) findViewById(R.id.balance);
         balanceTextView.setOnClickListener(listener);
+
+        View.OnClickListener eventListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), CalendarActivity.class);
+                startActivity(intent);
+            }
+        };
+        TextView eventTextView = (TextView) findViewById(R.id.events);
+        eventTextView.setOnClickListener(eventListener);
+
     }
 
     @Override
