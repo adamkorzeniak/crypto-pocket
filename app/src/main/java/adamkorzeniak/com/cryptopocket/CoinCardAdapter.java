@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
+public class CoinCardAdapter extends RecyclerView.Adapter<CoinCardAdapter.ViewHolder> {
 
     private String[] names;
     private String[] symbols;
@@ -26,7 +26,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
         }
     }
 
-    public CardAdapter(String[] names, String[] symbols) {
+    public CoinCardAdapter(String[] names, String[] symbols) {
         this.names = names;
         this.symbols = symbols;
     }
@@ -41,7 +41,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
     }
 
     @Override
-    public CardAdapter.ViewHolder onCreateViewHolder(
+    public CoinCardAdapter.ViewHolder onCreateViewHolder(
             ViewGroup parent, int viewType) {
         CardView cv = (CardView) LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.coin_element, parent, false);
