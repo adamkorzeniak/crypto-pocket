@@ -24,18 +24,26 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-        <activity android:name=".BalanceActivity"
-            android:parentActivityName=".MainActivity"/>
+        <activity
+            android:name=".BalanceActivity"
+            android:parentActivityName=".MainActivity" />
+
         <meta-data
             android:name="android.support.PARENT_ACTIVITY"
             android:value=".MainActivity" />
-        <activity android:name=".CalendarActivity"
+
+        <activity
+            android:name=".CalendarActivity"
             android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-
+        <activity android:name=".FavoriteCoinsActivity"
+            android:parentActivityName=".CalendarActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".CalendarActivity" /></activity>
     </application>
 
 </manifest>

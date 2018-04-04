@@ -1,21 +1,18 @@
 package adamkorzeniak.com.cryptopocket;
 
-import android.content.Intent;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
-import android.widget.TextView;
 
-public class CalendarActivity extends AppCompatActivity {
+public class FavoriteCoinsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_calendar);
+        setContentView(R.layout.activity_favorite_coins);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -25,23 +22,16 @@ public class CalendarActivity extends AppCompatActivity {
 
         RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
 
-        EventCardAdapter adapter = new EventCardAdapter(DatabaseMock.events);
+        CoinCardAdapter adapter = new CoinCardAdapter(DatabaseMock.coinNames, DatabaseMock.coinSymbols);
         mRecyclerView.setAdapter(adapter);
 
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(this);
         mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-        View.OnClickListener listener = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), FavoriteCoinsActivity.class);
-                startActivity(intent);
+        adapter.setListener(new CoinCardAdapter.Listener() {
+            public void onClick(int position) {
             }
-        };
-
-        TextView favouriteCoins = (TextView) findViewById(R.id.favourite_coins);
-        favouriteCoins.setOnClickListener(listener);
-
+        });
     }
 }
