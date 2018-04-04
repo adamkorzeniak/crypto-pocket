@@ -1,36 +1,39 @@
 package adamkorzeniak.com.cryptopocket;
 
 import android.content.Intent;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.TextView;
-import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class BalanceActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_balance);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        View.OnClickListener listener = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), BalanceActivity.class);
-                startActivity(intent);
-            }
-        };
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
-        TextView balanceTextView = (TextView) findViewById(R.id.balance);
-        balanceTextView.setOnClickListener(listener);
+        RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+
+        BalanceCardAdapter adapter = new BalanceCardAdapter(DatabaseMock.coinNames, DatabaseMock.coinSymbols, DatabaseMock.prices, DatabaseMock.balances);
+        mRecyclerView.setAdapter(adapter);
+
+        LinearLayoutManager mLayoutManager = new LinearLayoutManager(this);
+        mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        mRecyclerView.setLayoutManager(mLayoutManager);
+
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
