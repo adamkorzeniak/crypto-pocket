@@ -7,12 +7,12 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 
-public class AddAssetActivity extends AppCompatActivity {
+public class CalendarActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_asset);
+        setContentView(R.layout.activity_calendar);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -22,16 +22,13 @@ public class AddAssetActivity extends AppCompatActivity {
 
         RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
 
-        CoinCardAdapter adapter = new CoinCardAdapter(DatabaseMock.coinNames, DatabaseMock.coinSymbols);
+        EventCardAdapter adapter = new EventCardAdapter(DatabaseMock.events);
         mRecyclerView.setAdapter(adapter);
 
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(this);
         mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-        adapter.setListener(new CoinCardAdapter.Listener() {
-            public void onClick(int position) {
-            }
-        });
+
     }
 }
