@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="adamkorzeniak.com.cryptopocket">
 
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -39,11 +40,17 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-        <activity android:name=".FavoriteCoinsActivity"
+        <activity
+            android:name=".FavoriteCoinsActivity"
             android:parentActivityName=".CalendarActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".CalendarActivity" /></activity>
+                android:value=".CalendarActivity" />
+        </activity>
+
+        <service
+            android:name=".RetrieveCoinsService"
+            android:exported="false"></service>
     </application>
 
 </manifest>

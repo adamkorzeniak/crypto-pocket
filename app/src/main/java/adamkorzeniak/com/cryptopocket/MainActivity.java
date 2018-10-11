@@ -17,6 +17,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Intent intent = new Intent(this, RetrieveCoinsService.class);
+        startService(intent);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -40,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         };
         TextView eventTextView = (TextView) findViewById(R.id.events);
         eventTextView.setOnClickListener(eventListener);
+
 
     }
 
